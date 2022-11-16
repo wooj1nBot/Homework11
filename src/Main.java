@@ -141,7 +141,7 @@ public class Main {
             this.capacity = capacity;
         }
 
-        //Producer가 영문을 생성할때 마다 호출 되는 함수
+        //Producer가 영문을 생성할때 마다 호출 되는 함수(* synchronized 를 통해 동기화 처리)
         public synchronized void add(char alpha){
              current++; //현재 용량 + 1
              consume += alpha; //전체 결과값에 인자인 alpha를 이어 붙인다.
@@ -168,7 +168,7 @@ public class Main {
              }
         }
 
-        //Consumer가 영문을 소비할때 마다 호출 되는 함수
+        //Consumer가 영문을 소비할때 마다 호출 되는 함수(* synchronized 를 통해 동기화 처리)
         public synchronized void consume(){
             current--; // 현재 용량 - 1
             if(current == 0) { // 현재 용량이 0이라면 더 이상 소비를 못하므로 Consumer 정지
